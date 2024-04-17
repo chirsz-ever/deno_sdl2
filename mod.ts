@@ -1291,8 +1291,8 @@ export class Window {
         return new Deno.UnsafeWindowSurface("x11", window, display);
       } else if (subsystem == SDL_SYSWM_WAYLAND) {
         const surface = view.getPointer(4 + 4 + 8)!; // usize
-        throw new Error("Wayland is not supported");
-        // return new Deno.UnsafeWindowSurface("wayland", surface, display);
+        // throw new Error("Wayland is not supported");
+        return new Deno.UnsafeWindowSurface("wayland", surface, display);
       }
       throw new Error("Expected SDL_SYSWM_X11 or SDL_SYSWM_WAYLAND on Linux");
     }
